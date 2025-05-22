@@ -20,7 +20,7 @@ This system uses AWS Lambda functions to extract and process data from an RDS da
 
 | Task | Screenshot |
 |------|------------|
-| Lambda Function Configured | ![Lambda function configuration](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/01-Lambda%20Function%20Created.png?raw=true) |
+| First Lambda Function Configured | ![Lambda function configuration](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/01-Lambda%20Function%20Created.png?raw=true) |
 | VPC Settings | ![VPC Settings](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/03-VPC%20Configuration.png?raw=true) |
 | Lambda Security Group Setup | ![Lambda Security Group](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/02-Lambda%20SecurityGroup%20created.png?raw=true) |
 | Code Package Deployed | ![Code Deployed](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/04-Sales%20Analysis%20Report%20Data%20Extractor%20Uploaded.png?raw=true) |
@@ -41,32 +41,33 @@ This system uses AWS Lambda functions to extract and process data from an RDS da
 
 | Task | Screenshot |
 |------|------------|
-| SNS Topic Details | ![Lambda function configuration](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/05-salesAnalysistReport%20Function.png?raw=true) |
-| Code Package Deployed| ![Code Package Deployed](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/06-SalesAnalysisReport%20Code%20.png?raw=true) |
-| Environment Variables | ![Environment Variables](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/08-SNS%20Variables%20Added%20to%20Lambda.png?raw=true) |
-
-📸 [Add screenshot of SNS topic details]
+| SNS Topic Details | ![Lambda function configuration](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/07-Amazon%20SNS%20for%20Sales%20Report%20Created.png?raw=true) |
 
 ### 📬 Task 5: Subscribing an Email Address to the Topic
 🔸 To receive the report, I subscribed an accessible email address to the SalesReportTopic. The subscription was confirmed via the recipient’s inbox to complete the setup.
 
-📸 [Add screenshot of email subscription confirmation message or SNS subscriptions tab]
+| Task | Screenshot |
+|------|------------|
+| SNS Subscription Enabled | ![SNS Subscription Enabled](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/09-SNS%20Subscription%20Created.png?raw=true) |
 
 ### 🧪 Task 6: Testing the Complete Setup
 🔸 I tested the system by creating a test event within the AWS Lambda console and triggering the salesAnalysisReport function. The report was successfully generated and delivered to the subscribed email address.
 
-🔸 In case of any issues, I used CloudWatch Logs to verify output and troubleshoot common errors like incorrect security group rules, timeouts, or handler name mismatches.
-
-📸 [Add screenshot of test event and CloudWatch logs showing success]
+| Task | Screenshot |
+|------|------------|
+| Lambda Test Activated | ![Lambda Test Activated](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/10-Lambda%20Test%20Successful.png?raw=true) |
+| Email Confirmation Message | ![Email Confirmation Message](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/11-Daily%20Sales%20Report%20Email.png?raw=true) |
 
 ### ⏰Task 7: Automating with Amazon EventBridge
 🔸 I created a scheduled rule in Amazon EventBridge to trigger the report generation Lambda function daily. This was done using a CRON expression that runs the function every morning at a specific time in UTC.
 
 🔸 The rule was linked to the Lambda using the existing mySchedulerRole, allowing EventBridge to invoke the function automatically.
 
-📸 [Add screenshot of EventBridge rule configuration]
+| Task | Screenshot |
+|------|------------|
+| EventBridge Rule Configuration | ![Lambda Test Activated](https://github.com/Mzajirow/Implementing-a-Serverless-Architecture/blob/main/12-EventBridge%20Rule%20Created.png?raw=true) |
 
-💡 Why This Solution Works
+## 💡 Why This Solution Works
 ✅ The solution scales automatically with the business. As data grows or if multiple cafés adopt the same setup, there’s no need to change the architecture—Lambda and SNS will handle it without downtime.
 
 ✅ It’s cost-effective because you only pay for what you use. There's no need to provision or manage servers, and no cost when the system is idle.
@@ -77,6 +78,6 @@ This system uses AWS Lambda functions to extract and process data from an RDS da
 
 ✅ The system is extensible. In the future, reports can be pushed to dashboards, archived in S3, or even sent as SMS—all without major changes to the core setup.
 
-📊 Project Outcome
+## 📊 Project Outcome
 Frank and Martha, the café owners, now receive a clear and accurate sales report via email every day. This empowers them to make faster and better-informed decisions about inventory, pricing, and promotions. The setup has saved them time, reduced the need for manual reporting, and added professionalism to their business operations.
 
